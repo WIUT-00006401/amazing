@@ -1,0 +1,18 @@
+# Default maze configuration
+# Lines starting with # are ignored
+
+WIDTH=20
+HEIGHT=20
+
+# Entry and exit coordinates (x,y)
+ENTRY=0,0
+EXIT=19,19
+
+# Output file for the hexadecimal maze
+OUTPUT_FILE=maze.txt
+
+# Whether the maze must be perfect (single unique path)
+PERFECT=False
+
+# Optional: random seed for reproducibility
+SEED=12345
