@@ -241,14 +241,22 @@ class MazeApp:
             int: 0 on success.
         """
         
-        if key == 65307:
+        keymap = {
+            "ESC": {65307, 53},
+            "R": {114, 82, 15},
+            "P": {112, 80, 35},
+            "T": {116, 84, 17},
+            "A": {97, 65, 0}
+        }
+
+        if key in keymap["ESC"]:
             self.mlx.mlx_loop_exit(self.mlx_ptr)
-        elif key in (114, 82):
+        elif key in keymap["R"]:
             self.regenerate()
-        elif key in (112, 80):
+        elif key in keymap["P"]:
             self.show_path = not self.show_path
             self.draw_maze()
-        elif key in (116, 84):
+        elif key in keymap["T"]:
             self.theme_idx = (self.theme_idx + 1) % len(self.themes)
             self.theme = self.themes[self.theme_idx]
             self.mlx.mlx_clear_window(self.mlx_ptr, self.win)
@@ -265,7 +273,7 @@ class MazeApp:
                            self.win_h - self.offset_y, self.theme["BLOCK"])
             self.draw_maze()
             self.draw_legend()
-        elif key in (97, 65):
+        elif key in keymap["A"]:
             self.algorithm_idx = ((self.algorithm_idx + 1)
                                   % len(self.algorithms))
             self.algorithm = self.algorithms[self.algorithm_idx]
